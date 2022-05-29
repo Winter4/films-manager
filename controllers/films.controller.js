@@ -11,6 +11,7 @@ module.exports.getFilm = [
     ],
     async (req, res, next) => {
 		try {
+			// validate incoming request
 			validateRequest(validationResult(req), `/film/${req.params.title}`, res, 'Invalid film data');
 
 			const film = await filmService.get(req.params.title);
