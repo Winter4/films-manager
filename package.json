@@ -16,6 +16,7 @@
     "lru-cache": "^7.10.1",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
+    "redis": "^4.1.0",
     "sequelize": "^6.20.1",
     "winston": "^3.7.2",
     "winston-daily-rotate-file": "^4.6.1"

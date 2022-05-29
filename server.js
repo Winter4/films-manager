@@ -4,8 +4,6 @@ require('dotenv').config();
 const { log } = require('./logger');
 const app = express();
 
-const db = require('./database/sequelize');
-
 // = = = = = = = = = = = = = = = = =
 
 // logging every incoming request
@@ -36,12 +34,17 @@ app.use(
 
 // = = = = = = = = = = = = = = = = =
 
+const db = require('./database/sequelize');
+const redis = require('./caches/redis.cache').client;
 async function start() {
     try {
         // connect to DB
         await db.authenticate();
         console.log('Connected to DB');
         log.info('Connected to DB');
+
+        // connect to Redis
+        await redis.connect();
 
         // start the server
         app.listen(process.env.SERVER_PORT, () => {
