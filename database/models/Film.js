@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = sequelize => sequelize.define('user', {
+module.exports = sequelize => sequelize.define('film', {
     film_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -51,7 +51,10 @@ module.exports = sequelize => sequelize.define('user', {
         allowNull: false,
     }
 }, {
-  timestamps: true,
-  createdAt: false,
-  updatedAt: 'last_update'
+    timestamps: true,
+    createdAt: false,
+    updatedAt: 'last_update',
+
+    // actually the tables should be named not like that
+    freezeTableName: true,
 });

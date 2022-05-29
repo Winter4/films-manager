@@ -20,7 +20,16 @@ const error = new transports.DailyRotateFile({
 	maxFiles: '21d'
 });
 
-module.exports.log = createLogger({
+const debug = new transports.Console({ 
+	level: 'debug',
+	format: format.combine(
+        format.colorize(),
+        format.simple()
+    )
+});
+
+const logger = createLogger({
+
 	format: format.combine(
 		format.timestamp(),
 		format.json(),
@@ -30,3 +39,7 @@ module.exports.log = createLogger({
  		error,
 	]
 });
+
+if (process.env.LOG_LEVEL == 'debug') logger.add(debug);
+
+module.exports.log = logger;
