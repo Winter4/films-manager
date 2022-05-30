@@ -8,7 +8,7 @@ function createClient() {
     const database = process.env.DB_DATABASE;
 
     return new Sequelize(database, username, password, {
-        host: host,
+        host,
         dialect: 'postgres',
         
         logging: msg => log.info(msg),

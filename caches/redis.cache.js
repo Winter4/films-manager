@@ -1,8 +1,16 @@
 const { createClient } = require('redis');
 const { log } = require('../logger');
 
+const host = process.env.REDIS_HOST;
+const port = process.env.REDIS_PORT;
+//const password = process.env.REDIS_PASSWORD;
+
 // connect to localhost via default 6379 port
-const client = createClient();
+const client = createClient({
+    host,
+    port,
+//    password
+});
 
 client.on('connect', () => {
     console.log('Connectin to Redis..');

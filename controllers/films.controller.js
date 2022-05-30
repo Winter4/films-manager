@@ -9,13 +9,20 @@ module.exports.getFilm = [
     [
         param('title', 'Invalid film title').isString({ length: {min: 1} }),
     ],
-    async (req, res, next) => {
+	(req, res, next) => {
 		try {
 			// validate incoming request
 			validateRequest(validationResult(req), `/film/${req.params.title}`, res, 'Invalid film data');
+		} catch (e) {
+			next(e);
+		}
+	},
+    async (req, res, next) => {
+		try {
+			// get film from cache\db
+			const film = await filmService.get(req.params.title);
 
 			log.info('Response with film json OK');
-			const film = await filmService.get(req.params.title);
 			res.json({ data: film });
 		} catch (e) {
 			next(e);
