@@ -14,6 +14,7 @@ module.exports.getFilm = [
 			// validate incoming request
 			validateRequest(validationResult(req), `/film/${req.params.title}`, res, 'Invalid film data');
 
+			log.info('Response with film json OK');
 			const film = await filmService.get(req.params.title);
 			res.json({ data: film });
 		} catch (e) {
