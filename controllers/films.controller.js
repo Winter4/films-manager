@@ -13,8 +13,6 @@ module.exports.getFilm = [
     ],
 	(req, res, next) => {
 		try {
-			console.log(req.params.title);
-			console.log(validationResult(req));
 			// validate incoming request
 			validateRequest(validationResult(req), `/film/${req.params.title}`, res, 'Invalid film data');
 			next();
