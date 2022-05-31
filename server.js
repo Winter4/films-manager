@@ -20,6 +20,11 @@ app.use(require('./routes/films.route'));
 
 // - - - - -
 
+// not-existing route
+app.use(require('./routes/not-exists.route'));
+
+// - - - - -
+
 // handling errors
 app.use(
     // log
