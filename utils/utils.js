@@ -2,11 +2,11 @@ const { log } = require('../logger');
 
 // - - - - - - - - - - - - - - - - - -
 
-function validateRequest(errors, route, res, log) {
+function validateRequest(errors, route, res, logMsg) {
     if (!errors.isEmpty()) {
-        log.info(log, { route, errors });
+        log.info(logMsg, { route, errors });
         
-        return res.status(404).json({ message: log, errors });
+        return res.status(404).json({ message: logMsg, errors });
     }
 }
 

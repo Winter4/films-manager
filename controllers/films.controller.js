@@ -8,10 +8,13 @@ const filmService = require('../services/films.service');
 
 module.exports.getFilm = [
     [
-        param('title', 'Invalid film title').isString({ length: {min: 2, max: 255} }),
+        param('title', 'Invalid film title').isString(),
+		param('title', 'Invalid film title length').isLength({ min: 2, max: 255 }),
     ],
 	(req, res, next) => {
 		try {
+			console.log(req.params.title);
+			console.log(validationResult(req));
 			// validate incoming request
 			validateRequest(validationResult(req), `/film/${req.params.title}`, res, 'Invalid film data');
 			next();
