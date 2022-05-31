@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const { log } = require('./logger');
 const app = express();
+/* module.exports.app = app; */
 
 // = = = = = = = = = = = = = = = = =
 

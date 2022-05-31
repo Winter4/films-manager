@@ -1,18 +1,20 @@
 const { param, validationResult } = require('express-validator');
 const { validateRequest } = require('../utils/utils');
 
+const { log } = require('../logger');
 const filmService = require('../services/films.service');
 
 // = = = = = = = = = = = = = = = = = = = = = = = =
 
 module.exports.getFilm = [
     [
-        param('title', 'Invalid film title').isString({ length: {min: 1} }),
+        param('title', 'Invalid film title').isString({ length: {min: 2, max: 255} }),
     ],
 	(req, res, next) => {
 		try {
 			// validate incoming request
 			validateRequest(validationResult(req), `/film/${req.params.title}`, res, 'Invalid film data');
+			next();
 		} catch (e) {
 			next(e);
 		}

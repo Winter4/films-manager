@@ -1,10 +1,10 @@
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../../../.env') });
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
-const filmService = require('../../../services/films.service');
+const filmService = require('../../services/films.service');
 
-const db = require('../../../database/sequelize');
-const redis = require('../../../caches/redis.cache').client;
+const db = require('../../database/sequelize');
+const redis = require('../../caches/redis.cache').client;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -25,12 +25,23 @@ describe('Films service:', () => {
         expect(result.title).toEqual('Alabama Devil');
     });
 
-    test('should return null json for valid request for NOT existing film', async () => {
+    test('should return null for valid request for NOT existing film', async () => {
         const result = await filmService.get('Some not-existing film');
 
         expect(result).toBeNull();
     });
 });
+
+/* describe('Films route:', () => {
+
+    test('should return JSON with film data for valid request with exact title', () => {
+
+    });
+
+    test('should return 404 error for invalid request (title length < 2)', async () => {
+        
+    });
+}); */
 
 afterAll(async () => {
     await db.close();
