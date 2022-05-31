@@ -16,6 +16,4 @@ ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
 ENV LOG_LEVEL=info
 
-EXPOSE 8080
-
 CMD ["npm", "start"]
