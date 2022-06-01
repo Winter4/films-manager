@@ -45,6 +45,11 @@ In the `nginx` service published port (`published : mapped`) is the one you woul
 
 
 ## **Installation**
+Prerequisites:
+SQL database (Postgres, for now)
+* Docker run: Docker, Docker Compose
+* NPM run: Node.JS, Redis
+
 1. Download the sources from GitHub repository
 2. Create `.env` file in the root of the folder (so that `server.js` and created `.env` were the same level). That's your **environment** file - all the variables, defined here, would be added to your `process.env` object during the app runtime 
 3. Fill `.env` file with the following data in `'key=value'` format:
