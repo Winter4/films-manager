@@ -45,6 +45,11 @@ In the `nginx` service published port (`published : mapped`) is the one you woul
 
 
 ## **Installation**
+Prerequisites:
+SQL database (Postgres, for now)
+* Docker run: Docker, Docker Compose
+* NPM run: Node.JS, Redis
+
 1. Download the sources from GitHub repository
 2. Create `.env` file in the root of the folder (so that `server.js` and created `.env` were the same level). That's your **environment** file - all the variables, defined here, would be added to your `process.env` object during the app runtime 
 3. Fill `.env` file with the following data in `'key=value'` format:
@@ -78,7 +83,7 @@ In the `nginx` service published port (`published : mapped`) is the one you woul
 
     * `LOG_LEVEL` (optional): by default the logs would be written to files, except the initial launch logs - you'll see them in your console, too. Setting this to `debug` would make the logs appear both in the files and in the console. Debug mode, you know :)
 
-4. Exec `npm install` in your terminal in the root of the sources. All the dependencies would be fetched and `node_modules` folder would appear
+4. (optional) If using NPM run, exec `npm install` in your terminal in the root of the sources. All the dependencies would be fetched and `node_modules` folder would appear.
 
 ## **Running**
 Congratulations! Setting your environments could seem a little bit tricky, so we will take a look around the whole project just later. Now, you are ready to run the app and have some data returned for your requests. Again, depending on your preferenced way of running, two cases:
