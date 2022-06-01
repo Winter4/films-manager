@@ -3,12 +3,14 @@ const { log } = require('../logger');
 
 function createClient() {
     const host = process.env.DB_HOST;
+    const port = process.env.DB_PORT;
     const username = process.env.DB_USER;
     const password = process.env.DB_PASSWORD;
     const database = process.env.DB_DATABASE;
 
     return new Sequelize(database, username, password, {
         host,
+        port,
         dialect: 'postgres',
         
         logging: msg => log.info(msg),

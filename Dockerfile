@@ -14,6 +14,5 @@ COPY ./ ./
 # reassign env vars to connect to redis inside of the container correctly
 ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
-ENV LOG_LEVEL=info
 
 CMD ["npm", "start"]
