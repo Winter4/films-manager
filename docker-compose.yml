@@ -2,11 +2,13 @@ version: '3.9'
 
 services:
   redis:
+    restart: always
     image: redis
     expose:
       - '6379'
   
   app:
+    restart: always
     build: ./
     expose:
       - '8080'
@@ -14,6 +16,7 @@ services:
       - redis
 
   nginx:
+    restart: always
     build: ./nginx/
     ports:
       - '80:80'
